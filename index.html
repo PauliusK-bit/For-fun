@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="container"></div>
+    <form id="product-form">
+      <div class="form-control">
+        <label for="address">Adresas</label>
+        <input type="text" id="address" name="address" />
+      </div>
+      <div class="form-control">
+        <label for="phone-number">Telefono numeris</label>
+        <input type="text" name="phone-number" id="phone-number" />
+      </div>
+      <div class="form-control">
+        <label for="product">Kas užsakytą</label>
+        <input type="text" name="product" id="product" />
+      </div>
+      <button type="submit">Pridėti į užsakymų sąrašą</button>
+    </form>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./productList.js"></script>
+  </body>
+</html>
