@@ -1,9 +1,10 @@
-const container = document.querySelector("#container");
+const API_URL = "https://orders-api.onrender.com/orders";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const orderList = document.getElementById("order-list");
 
-  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  const response = await fetch(API_URL);
+  const orders = await response.json();
 
   if (orders.length === 0) {
     orderList.innerHTML = "<p>Nėra užsakymų</p>";

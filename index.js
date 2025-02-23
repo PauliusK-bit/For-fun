@@ -1,19 +1,25 @@
-const container = document.querySelector("#container");
+const API_URL = "https://orders-api.onrender.com/orders";
 
-const productForm = document.querySelector("#product-form");
+document
+  .getElementById("product-form")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-productForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+    const order = {
+      address: document.getElementById("address").value,
+      phoneNumber: document.getElementById("phone-number").value,
+      product: document.getElementById("product").value,
+    };
 
-  const address = document.querySelector("#address").value;
-  const phoneNumber = document.querySelector("#phone-number").value;
-  const product = document.querySelector("#product").value;
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(order),
+    });
 
-  const order = { address, phoneNumber, product };
-
-  let orders = JSON.parse(localStorage.getItem("orders")) || [];
-  orders.push(order);
-  localStorage.setItem("orders", JSON.stringify(orders));
-
-  window.location.href = "productList.html";
-});
+    if (response.ok) {
+      window.location.href = "productList.html";
+    } else {
+      alert("Klaida siunčiant užsakymą!");
+    }
+  });
